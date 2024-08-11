@@ -1,35 +1,75 @@
 import React, { useState } from 'react';
+import styles from '../styles/CreateProjectModal.module.css';
+import { getProjects, setProjects } from './../utils/storage';
 
-const CreateProjectModal = ({ onCreateProject }) => {
+const CreateProjectModal = ({ isOpen, onClose }) => {
     const [projectName, setProjectName] = useState('');
-    const [numEpisodes, setNumEpisodes] = useState(0);
+    const [episodeCount, setEpisodeCount] = useState('');
 
-    const handleSubmit = () => {
-        const project = {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const projectName = e.target.elements.projectName.value.trim();
+        const episodeCount = parseInt(e.target.elements.episodeCount.value.trim());
+
+        if (!projectName) {
+            alert("Project Name is required!");
+            return;
+        }
+
+        if (isNaN(episodeCount) || episodeCount < 0) {
+            alert("Please enter a valid number of episodes.");
+            return;
+        }
+
+        // Retrieve existing projects from local storage
+        const projects = getProjects();
+
+        // Create a new project object
+        const newProject = {
+            id: Date.now(),
             name: projectName,
-            episodes: numEpisodes,
-            createdAt: new Date().toISOString(),
+            episodes: episodeCount,
+            createdAt: new Date().toLocaleDateString(),
         };
-        onCreateProject(project);
+
+        // Add the new project to the list
+        projects.push(newProject);
+
+        // Save the updated list back to local storage
+        setProjects(projects);
+
+        // Close the modal after creating the project
+        onClose();
     };
 
     return (
-        <div className="modal">
-            <h2>Create Project</h2>
-            <input
-                type="text"
-                placeholder="Project Name"
-                value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Number of Episodes"
-                value={numEpisodes}
-                onChange={(e) => setNumEpisodes(e.target.value)}
-            />
-            <button onClick={handleSubmit}>Create</button>
-        </div>
+        isOpen && (
+            <div className={styles.modalBackground}>
+                <div className={styles.modalContent}>
+                    <button className={styles.closeButton} onClick={onClose}>X</button>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="projectName">Project Name</label>
+                        <input
+                            type="text"
+                            id="projectName"
+                            value={projectName}
+                            onChange={(e) => setProjectName(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="episodeCount">Number of Episodes</label>
+                        <input
+                            type="number"
+                            id="episodeCount"
+                            value={episodeCount}
+                            onChange={(e) => setEpisodeCount(e.target.value)}
+                            required
+                        />
+                        <button type="submit" className={styles.createButton}>Create</button>
+                    </form>
+                </div>
+            </div>
+        )
     );
 };
 

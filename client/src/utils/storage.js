@@ -13,3 +13,6 @@ export const getProjects = () => {
 export const setProjects = (projects) => {
     localStorage.setItem('projects', JSON.stringify(projects));
 };
+
+
+

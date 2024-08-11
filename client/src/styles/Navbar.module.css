@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    /* Adjust as needed */
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    /* Adjust size as needed */
+    height: auto;
+}
+
+.logoText {
+    color: #7E22CE;
+    /* Theme color */
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    /* color: #7E22CE; */
+    /* Theme color */
+    font-size: 24px;
+    margin-left: 16px;
+    cursor: pointer;
+}

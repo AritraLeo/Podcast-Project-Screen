@@ -1,141 +1,187 @@
-/* General Styles */
 .container {
-    padding: 20px;
-}
-
-.theme-color {
-    color: #7E22CE;
-}
-
-.white-text {
-    color: white;
-}
-
-/* Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.icons {
-    display: flex;
-    gap: 15px;
-}
-
-.icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-/* Main Section Styles */
-.main-section {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.back-home-button {
-    background-color: #E0E0E0;
-    border-radius: 50%;
     padding: 10px;
-    position: relative;
-    top: -30px;
-    left: 20px;
-    cursor: pointer;
 }
 
-.center-text {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #7E22CE;
-}
-
-.desc-text {
-    margin: 20px 0;
-    color: #969696;
-    font-size: 16px;
-}
-
-.create-project-button {
-    background-color: #000;
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.create-project-button img {
-    margin-right: 10px;
-}
-
-/* Projects Section Styles */
-.projects-header {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+} */
+
+.logoSection {
+    display: flex;
+    align-items: center;
 }
 
-.project-cards {
+.logoIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.logoText {
+    color: #7E22CE;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.navIcons {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
 }
 
-.project-card {
-    display: flex;
-    background-color: #F8F8F8;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    align-items: center;
-}
-
-.project-initials {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.backButton {
+    margin: 0px 120px;
+    background-color: #f0f0f0;
+    border-radius: 35.32px;
+    padding: 10px 20px;
+    width: 198.69px;
+    height: 41px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    margin-right: 15px;
+    gap: 8px;
+    /* Reduced gap for better alignment */
+    border: none;
+    /* Removes any unwanted borders */
+    opacity: 1;
+    /* Set opacity to 1 to make the button visible */
+    cursor: pointer;
+    /* Adds a pointer cursor on hover */
 }
 
-.project-details {
+.backButton span {
+    font-size: 16px;
+    /* Adjust the text color as needed */
+    display: flex;
+    align-items: center;
+}
+
+.projectsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createProjectButtonContainer {
+    display: flex;
+    justify-content: center;
+    /* Center the button horizontally */
+    width: 100%;
+}
+
+.createProjectButton {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Adjust the space between the icon and the text */
+    width: 569.83px;
+    height: 109.92px;
+    cursor: pointer;
+    border: none;
+    font-family: Roboto, sans-serif;
+    font-size: 46.28px;
+    font-weight: 600;
+    line-height: 54.23px;
     text-align: left;
 }
 
-.project-name {
-    color: #7E22CE;
-    font-size: 18px;
-    font-weight: bold;
+.createProjectButton svg {
+    font-size: 46.28px;
+    /* Icon size */
+    position: relative;
+    top: 3px;
+    /* Adjust this value to fine-tune the vertical alignment */
 }
 
-.project-meta {
-    color: #3C3C3C;
-    font-size: 14px;
-    margin-top: 5px;
+.createProjectButton svg {
+    font-size: 46.28px;
+    /* Icon size */
+    position: relative;
+    top: 3px;
+    /* Adjust this value to fine-tune the vertical alignment */
 }
 
-.created-at {
-    font-family: Roboto, sans-serif;
-    font-size: 15.82px;
+.projectGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.noProjects {
+    text-align: center;
+    /* margin-top: 10px; */
+    padding: 0rem 10rem;
+    /* width: 1495px; */
+}
+
+.noProjects p {
+    font-family: Roboto;
+    font-size: 25px;
     font-weight: 400;
-    line-height: 18.54px;
-    color: #969696;
-    margin-top: 5px;
+    line-height: 41.02px;
+    text-align: center;
+}
+
+.image {
+    /* margin: 10px 0; */
+}
+
+.modal {
+    /* Modal specific styling */
+    display: block;
+}
+
+.projsContainer {
+    padding: 0rem 4rem;
+}
+
+.ProjectsHeading {
+    font-family: Roboto;
+    font-size: 73.41px;
+    font-weight: 700;
+    line-height: 86.03px;
+    text-align: left;
+    color: #7E22CE;
+}
+
+.createProjectButtonTop {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Adjust the space between the icon and the text */
+    width: 376.17px;
+    height: 72.56px;
+
+    border-radius: 8.51px;
+    opacity: 0px;
+    cursor: pointer;
+    border: none;
+    font-family: Roboto;
+    font-size: 30.55px;
+    font-weight: 600;
+    line-height: 35.8px;
+    text-align: left;
+}
+
+.createProjectButtonTop svg {
+    font-size: 46.28px;
+    /* Icon size */
+    position: relative;
+    top: 3px;
+    /* Adjust this value to fine-tune the vertical alignment */
+}
+
+.createProjectButtonTop svg {
+    font-size: 46.28px;
+    /* Icon size */
+    position: relative;
+    top: 3px;
+    /* Adjust this value to fine-tune the vertical alignment */
 }

@@ -1,0 +1,72 @@
+/* ProjectCard.module.css */
+
+.card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    transition: transform 0.2s;
+    width: 452.02px;
+    height: 165.34px;
+    border: 1.19px solid #999999;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152.4px;
+    height: 140.01px;
+    border-radius: 18.21px;
+    color: white;
+    margin-right: 16px;
+    opacity: 1;
+    font-family: Roboto;
+    font-size: 77.95px;
+    font-weight: 700;
+    line-height: 91.35px;
+    text-align: left;
+    /* Set to 1 to make it visible */
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.projectName {
+    font-family: Roboto, sans-serif;
+    font-size: 25.31px;
+    font-weight: 700;
+    line-height: 29.66px;
+    text-align: left;
+    color: #7E22CE;
+}
+
+.projectEpisodes {
+    font-family: Roboto, sans-serif;
+    font-size: 15.82px;
+    font-weight: 400;
+    line-height: 18.54px;
+    text-align: left;
+    color: #3C3C3C;
+    margin-top: 4px;
+}
+
+.projectCreatedAt {
+    font-family: Roboto, sans-serif;
+    font-size: 15.82px;
+    font-weight: 400;
+    line-height: 18.54px;
+    text-align: left;
+    color: #969696;
+    margin-top: 4px;
+}
