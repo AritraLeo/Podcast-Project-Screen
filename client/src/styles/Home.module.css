@@ -1,0 +1,141 @@
+/* General Styles */
+.container {
+    padding: 20px;
+}
+
+.theme-color {
+    color: #7E22CE;
+}
+
+.white-text {
+    color: white;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Main Section Styles */
+.main-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.back-home-button {
+    background-color: #E0E0E0;
+    border-radius: 50%;
+    padding: 10px;
+    position: relative;
+    top: -30px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.center-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #7E22CE;
+}
+
+.desc-text {
+    margin: 20px 0;
+    color: #969696;
+    font-size: 16px;
+}
+
+.create-project-button {
+    background-color: #000;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.create-project-button img {
+    margin-right: 10px;
+}
+
+/* Projects Section Styles */
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-card {
+    display: flex;
+    background-color: #F8F8F8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    align-items: center;
+}
+
+.project-initials {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-right: 15px;
+}
+
+.project-details {
+    text-align: left;
+}
+
+.project-name {
+    color: #7E22CE;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.project-meta {
+    color: #3C3C3C;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.created-at {
+    font-family: Roboto, sans-serif;
+    font-size: 15.82px;
+    font-weight: 400;
+    line-height: 18.54px;
+    color: #969696;
+    margin-top: 5px;
+}

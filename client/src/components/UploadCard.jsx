@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import UploadModal from './UploadModal';
 
-const UploadCard = ({ platform }) => {
-    const handleClick = () => {
-        // Show upload modal
+const UploadCard = ({ platform, onUpload }) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
     };
 
     return (
-        <div className="upload-card" onClick={handleClick}>
-            <img src={`/assets/${platform.toLowerCase()}.svg`} alt={platform} />
-            <span>Upload to {platform}</span>
+        <div>
+            <div className="upload-card" onClick={handleOpenModal}>
+                <img src={`/assets/${platform.toLowerCase()}.svg`} alt={platform} />
+                <span>Upload to {platform}</span>
+            </div>
+            {showModal && (
+                <UploadModal
+                    platform={platform}
+                    onClose={handleCloseModal}
+                    onUpload={onUpload}
+                />
+            )}
         </div>
     );
 };

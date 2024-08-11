@@ -44,7 +44,7 @@ const Home = () => {
                     <div className="project-list">
                         {projects.map((project, index) => (
                             <div key={index}>
-                                <a href="">
+                                <a href={`/project/${index}`}>
                                     <div>
                                         {project.name}
                                     </div>
