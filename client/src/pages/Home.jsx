@@ -44,7 +44,17 @@ const Home = () => {
                     <div className="project-list">
                         {projects.map((project, index) => (
                             <div key={index}>
-                                {project.name}
+                                <a href="">
+                                    <div>
+                                        {project.name}
+                                    </div>
+                                    <div>
+                                        {project.episodes}
+                                    </div>
+                                    <div>
+                                        {project.createdAt}
+                                    </div>
+                                </a>
                             </div>
                         ))}
                     </div>
