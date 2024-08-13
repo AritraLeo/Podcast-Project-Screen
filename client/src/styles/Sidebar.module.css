@@ -1,0 +1,155 @@
+.sidebar {
+    width: 445.2px;
+    height: 100vh;
+    /* height: 95vh; */
+    /* Full height of the viewport */
+    background: #F3E8FF;
+    /* Background color */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 20px;
+}
+
+/* .logoContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logoText {
+    font-size: 24px;
+    margin-left: 10px;
+    font-family: Roboto, sans-serif;
+} */
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    /* margin-left: -144px; */
+    padding-bottom: 2rem
+}
+
+.logo {
+    width: 50px;
+    /* Adjust size as needed */
+    height: auto;
+}
+
+.logoText {
+    color: #7E22CE;
+    /* Theme color */
+    font-size: 44px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.sidebarTitle {
+    font-family: Roboto;
+    font-size: 18.55px;
+    font-weight: 500;
+    line-height: 26.5px;
+    letter-spacing: 0.13250000774860382px;
+    text-align: left;
+    color: #49454F;
+    padding-bottom: 2rem
+}
+
+
+
+
+
+.navButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between the circle and the text */
+    width: 90%;
+    height: 74.2px;
+    background-color: transparent;
+    border: none;
+    border-radius: 132.5px;
+    margin-bottom: 15.9px;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 20px;
+    /* Adjust this for gap from the left */
+    line-height: 74.2px;
+    text-decoration: none;
+    background-color: #1D1B2014;
+}
+
+.navButtonActive {
+    background-color: #7E22CE;
+    color: white;
+}
+
+.circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #3C3C3C;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+}
+
+.navButtonActive .circle {
+    background-color: black;
+}
+
+
+/* .navButton {
+    width: 100%;
+    height: 74.2px;
+    background-color: transparent;
+    border: none;
+    border-radius: 132.5px;
+    margin-bottom: 15.9px;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    left: 48px;
+    line-height: 74.2px;
+    text-decoration: none;
+    background-color: #1D1B2014;
+}
+
+.navButtonActive {
+    background-color: #7E22CE;
+    color: white;
+} */
+
+.hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.settings {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.settingsIcon {
+    margin-right: 10px;
+    background: #1D1B201F;
+    border-radius: 50%;
+    padding: 0.5rem;
+}

@@ -1,0 +1,74 @@
+.uploadCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 0.5rem 3rem;
+    height: 109px;
+    border-radius: 22px;
+    background: #FFFFFF;
+    border: 1px solid #999999;
+    cursor: pointer;
+    /* transition: transform 0.2s; */
+
+    border: 1px solid #999999;
+
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1),
+        4px 8px 9px rgba(0, 0, 0, 0.08),
+        9px 18px 12px rgba(0, 0, 0, 0.05),
+        16px 32px 14px rgba(0, 0, 0, 0.03),
+        25px 49px 16px rgba(0, 0, 0, 0.01);
+}
+
+/* .uploadCard:hover {
+    transform: scale(1.05);
+} */
+
+.iconContainer {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.youtubeIcon {
+    color: #FFFFFF;
+    background-color: #DA0000;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.spotifyIcon {
+    color: #FFFFFF;
+    background-color: #7BD568;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.uploadIcon {
+    color: #FFFFFF;
+    background-color: #999;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.textContainer {
+    margin-left: 20px;
+}
+
+.uploadText {
+    /* font-size: 24px;
+    color: #333; */
+    font-family: Roboto;
+    font-size: 26.64px;
+    font-weight: 700;
+    line-height: 33.06px;
+    letter-spacing: 0.1903058886528015px;
+    text-align: left;
+}
+
+.platformText {
+    font-size: 18px;
+    color: #999;
+}

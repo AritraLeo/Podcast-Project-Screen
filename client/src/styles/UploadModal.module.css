@@ -1,4 +1,4 @@
-.modalBackground {
+.modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
     position: relative;
 }
 
-.closeButton {
+.closeIcon {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -36,6 +36,26 @@
     cursor: pointer;
     border: none;
     background-color: #FFFFFF;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.modalIcon {
+    font-size: 50px;
+    /* color: #DA0000; */
+}
+
+.modalTitle {
+    font-family: Roboto, sans-serif;
+    font-size: 55px;
+    font-weight: 700;
+    line-height: 64.45px;
+    text-align: left;
 }
 
 .modalForm {
@@ -63,10 +83,16 @@
     box-sizing: border-box;
 }
 
-.createButton {
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.uploadButton {
     width: 185px;
     height: 73px;
-    background: #7E22CE;
+    background: #211935;
     color: #fff;
     border: none;
     border-radius: 8.51px;

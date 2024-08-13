@@ -48,22 +48,24 @@ const CreateProjectModal = ({ isOpen, onClose }) => {
             <div className={styles.modalBackground}>
                 <div className={styles.modalContent}>
                     <button className={styles.closeButton} onClick={onClose}>X</button>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="projectName">Project Name</label>
+                    <form onSubmit={handleSubmit} className={styles.modalForm}>
+                        <label htmlFor="projectName" className={styles.modalLabel}>Project Name</label>
                         <input
                             type="text"
                             id="projectName"
                             value={projectName}
                             onChange={(e) => setProjectName(e.target.value)}
                             required
+                            className={styles.modalInput}
                         />
-                        <label htmlFor="episodeCount">Number of Episodes</label>
+                        <label htmlFor="episodeCount" className={styles.modalLabel}>Number of Episodes</label>
                         <input
                             type="number"
                             id="episodeCount"
                             value={episodeCount}
                             onChange={(e) => setEpisodeCount(e.target.value)}
                             required
+                            className={styles.modalInput}
                         />
                         <button type="submit" className={styles.createButton}>Create</button>
                     </form>

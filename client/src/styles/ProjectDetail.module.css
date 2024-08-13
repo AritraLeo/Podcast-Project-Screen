@@ -1,0 +1,173 @@
+.projectDetail {
+    display: flex;
+}
+
+.mainContent {
+    padding: 40px;
+    flex-grow: 1;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.breadcrumbIcon {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #7E22CE;
+}
+
+.breadcrumbRight {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.breadcrumbDropdown {
+    margin-right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.breadcrumbNotification {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.uploadTitle {
+    font-family: Roboto, sans-serif;
+    font-size: 55px;
+    font-weight: 700;
+    line-height: 64.45px;
+    color: #7E22CE;
+    margin-bottom: 30px;
+}
+
+.uploadContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 62px;
+}
+
+.uploadCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 380px;
+    height: 139px;
+    border: 1px solid #999999;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.uploadCard:hover {
+    transform: scale(1.05);
+}
+
+.uploadCardIcon {
+    font-size: 36px;
+    color: red;
+    margin-right: 10px;
+}
+
+.uploadCardText {
+    font-size: 24px;
+    color: #333;
+}
+
+.uploadTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border-radius: 22px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1),
+        4px 8px 9px rgba(0, 0, 0, 0.08),
+        9px 18px 12px rgba(0, 0, 0, 0.05),
+        16px 32px 14px rgba(0, 0, 0, 0.03),
+        25px 49px 16px rgba(0, 0, 0, 0.01);
+}
+
+.uploadTable th,
+.uploadTable td {
+    padding: 15px;
+    border-bottom: 1px solid #999999;
+    text-align: left;
+    font-family: Roboto;
+    font-size: 26.64px;
+    font-weight: 500;
+    line-height: 33.06px;
+    letter-spacing: 0.1903058886528015px;
+    text-align: left;
+}
+
+.uploadTable th {
+    font-weight: bold;
+    background-color: #f9f9f9;
+    font-family: Roboto;
+    font-size: 26.64px;
+    font-weight: 700;
+    line-height: 33.06px;
+    letter-spacing: 0.1903058886528015px;
+    text-align: left;
+}
+
+.uploadTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.uploadTable .status {
+    font-weight: bold;
+    color: #3c3c3c;
+}
+
+.uploadTable .actions {
+    text-align: center;
+}
+
+.actionsContainer {
+    display: flex;
+    width: 155px;
+    height: 51px;
+    border-radius: 5.37px;
+    border: 0.89px solid #D9D9D9;
+}
+
+.editButton {
+    flex: 1;
+    font-family: Roboto, sans-serif;
+    font-size: 17.89px;
+    font-weight: 500;
+    line-height: 20.97px;
+    text-align: center;
+    color: #000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.deleteButton {
+    flex: 1;
+    font-family: Roboto, sans-serif;
+    font-size: 17.89px;
+    font-weight: 500;
+    line-height: 20.97px;
+    text-align: center;
+    color: #FF274C;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border-left: 0.89px solid #D9D9D9;
+}

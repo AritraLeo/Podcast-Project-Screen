@@ -10,16 +10,18 @@ const ProjectCard = ({ project }) => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     return (
-        <div className={styles.card}>
-            <div className={styles.initials} style={{ backgroundColor: randomColor }}>
-                {initials}
+        <a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>
+            <div className={styles.card}>
+                <div className={styles.initials} style={{ backgroundColor: randomColor }}>
+                    {initials}
+                </div>
+                <div className={styles.details}>
+                    <h3 className={styles.projectName}>{project.name}</h3>
+                    <p className={styles.projectEpisodes}>{project.episodes} Episodes</p>
+                    <p className={styles.projectCreatedAt}>Last edited {new Date(project.createdAt).toLocaleDateString()}</p>
+                </div>
             </div>
-            <div className={styles.details}>
-                <h3 className={styles.projectName}>{project.name}</h3>
-                <p className={styles.projectEpisodes}>{project.episodes} Episodes</p>
-                <p className={styles.projectCreatedAt}>Last edited {new Date(project.createdAt).toLocaleDateString()}</p>
-            </div>
-        </div>
+        </a>
     );
 };
 
