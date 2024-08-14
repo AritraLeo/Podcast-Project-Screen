@@ -185,3 +185,67 @@
     top: 3px;
     /* Adjust this value to fine-tune the vertical alignment */
 }
+
+
+
+/* CSS for form that takes in user data */
+
+.userDetailsFormContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    padding: 2rem;
+}
+
+.userDetailsForm {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.userDetailsInputGroup {
+    margin-bottom: 1.5rem;
+}
+
+.userDetailsInputGroup label {
+    display: block;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #7E22CE;
+    margin-bottom: 0.5rem;
+}
+
+.userDetailsInputGroup input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.userDetailsSubmitButton {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #7E22CE;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.userDetailsSubmitButton:hover {
+    background-color: #631ca6;
+}
