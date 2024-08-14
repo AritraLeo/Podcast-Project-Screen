@@ -7,7 +7,7 @@ import HomePageImg from '../assets/Home-main-img.png';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateProjectModal from '../components/CreateProjectModal';
-import { getProjects } from '../utils/storage';
+import { getProjects, setProjects } from '../utils/storage';
 
 const Home = () => {
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
@@ -16,6 +16,18 @@ const Home = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const projects = getProjects();
+
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            const userEmail = localStorage.getItem('user_email');
+            const projects = await getProjects(userEmail);
+            setProjects(projects);
+        };
+
+        fetchProjects();
+    }, []);
+
 
     useEffect(() => {
         if (!username || !email) {

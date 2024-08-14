@@ -8,5 +8,10 @@ export default defineConfig({
     modules: {
       scopeBehaviour: 'local', // This is the default
     }
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000'
+    }
   }
 })
