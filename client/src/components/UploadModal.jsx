@@ -10,7 +10,7 @@ const UploadModal = ({ platform, onClose, onUpload }) => {
     const handleSubmit = (event) => {
         event.stopPropagation();
         if (name && link) {
-            onUpload({ name, link, createdAt: new Date().toISOString() });
+            onUpload({ name, url: link, createdAt: new Date().toISOString(), platform: platform });
             onClose();
         }
     };

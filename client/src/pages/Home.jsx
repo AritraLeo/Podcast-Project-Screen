@@ -7,7 +7,7 @@ import HomePageImg from '../assets/Home-main-img.png';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateProjectModal from '../components/CreateProjectModal';
-import { getProjects, setProjects } from '../utils/storage';
+import { getProjects, removeUser } from '../utils/storage';
 
 const Home = () => {
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
@@ -15,7 +15,7 @@ const Home = () => {
     const [isUserDetailsRequired, setIsUserDetailsRequired] = useState(!username || !email);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const projects = getProjects();
+    const [projects, setProjects] = useState([]);
 
 
     useEffect(() => {
@@ -84,11 +84,11 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <Navbar />
-            <button className={styles.backButton}>
-                <IoHomeOutline size={20} /> <span>Back to Home</span>
+            <button className={styles.backButton} >
+                <IoHomeOutline size={20} onClick={() => removeUser()} /> <span>Back to Home</span>
             </button>
 
-            {hasProjects() ? (
+            {projects.length > 0 ? (
                 <>
                     <div className={styles.projsContainer}>
                         <div className={styles.projectsHeader}>
@@ -100,7 +100,7 @@ const Home = () => {
 
                         <div className={styles.projectGrid}>
                             {projects?.map((project) => (
-                                <ProjectCard key={project.id} project={project} />
+                                <ProjectCard key={project._id} project={project} />
                             ))}
                         </div>
                     </div>

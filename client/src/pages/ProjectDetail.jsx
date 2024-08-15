@@ -1,22 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MdOutlineHome } from 'react-icons/md';
 import { IoMdArrowDropdown, IoMdNotificationsOutline } from 'react-icons/io';
 import Sidebar from '../components/Sidebar';
 import UploadCard from '../components/UploadCard';
-import { getProjects } from '../utils/storage';
+import { getProjects, addLinkToProject } from '../utils/storage';
 import styles from '../styles/ProjectDetail.module.css';
 import GB from '../assets/GB.png'
 
 const ProjectDetail = () => {
     const { projectId } = useParams();
-    const projects = getProjects();
-    const project = projects.find(proj => proj.id === Number(projectId));
-
+    const [projects, setProjects] = useState([]);
+    const [project, setProject] = useState({});
     const [uploads, setUploads] = useState([]);
 
-    const handleUpload = (upload) => {
-        setUploads([...uploads, upload]);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            const userEmail = localStorage.getItem('user_email');
+            const projects = await getProjects(userEmail);
+            setProjects(projects);
+            // Find the project after projects are fetched
+            const foundProject = projects.find(proj => proj._id === projectId);
+            setProject(foundProject);
+            setUploads(foundProject?.links || []);
+        };
+
+        fetchProjects();
+    }, [projectId]);
+
+
+    const handleUpload = async (upload) => {
+        console.log({ ...upload, projectId });
+        try {
+            const updatedProject = await addLinkToProject(projectId, upload);
+
+            setUploads(updatedProject?.links); // Update state with new links
+        } catch (error) {
+            console.error('Error uploading link:', error);
+        }
     };
 
     return (
@@ -25,7 +47,7 @@ const ProjectDetail = () => {
             <div className={styles.mainContent}>
                 <div className={styles.breadcrumb}>
                     <MdOutlineHome size={50} className={styles.breadcrumbIcon} /> <span style={{ fontSize: 30 }}>
-                        / {project.name} / <span style={{ color: '#7E22CE', fontWeight: 500 }}>
+                        / {project?.name || 'Loading....'} / <span style={{ color: '#7E22CE', fontWeight: 500 }}>
                             Upload
                         </span>
                     </span>

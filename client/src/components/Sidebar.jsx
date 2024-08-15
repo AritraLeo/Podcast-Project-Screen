@@ -12,7 +12,7 @@ const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
             {/* <div className={styles.logoContainer}> */}
-            <div className={styles.leftSection}>
+            <div className={styles.leftSection} onClick={() => window.location.href = '/'} style={{ cursor: 'pointer' }}>
                 <img src={DirectRight} alt="Logo" className={styles.logo} />
                 <span className={styles.logoText}>LAMA.</span>
             </div>
