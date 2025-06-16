@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/CreateProjectModal.module.css';
-import { getProjects, setProjects } from './../utils/storage';
+import { createProject } from './../utils/storage';
 
-const CreateProjectModal = ({ isOpen, onClose }) => {
+const CreateProjectModal = ({ isOpen, onClose, onProjectCreated }) => {
     const [projectName, setProjectName] = useState('');
     const [episodeCount, setEpisodeCount] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const projectName = e.target.elements.projectName.value.trim();
@@ -22,25 +23,38 @@ const CreateProjectModal = ({ isOpen, onClose }) => {
             return;
         }
 
-        // Retrieve existing projects from local storage
-        const projects = getProjects();
+        try {
+            const userEmail = localStorage.getItem('user_email');
 
-        // Create a new project object
-        const newProject = {
-            id: Date.now(),
-            name: projectName,
-            episodes: episodeCount,
-            createdAt: new Date().toLocaleDateString(),
-        };
+            if (!userEmail) {
+                alert("User email not found. Please refresh and try again.");
+                return;
+            }
 
-        // Add the new project to the list
-        projects.push(newProject);
+            const projectData = {
+                user_email: userEmail,
+                name: projectName,
+                episodes: episodeCount
+            };
 
-        // Save the updated list back to local storage
-        setProjects(projects);
+            await createProject(projectData);
 
-        // Close the modal after creating the project
-        onClose();
+            // Reset form fields
+            setProjectName('');
+            setEpisodeCount('');
+
+            // Close modal
+            onClose();
+
+            // Trigger parent component to refresh projects
+            if (onProjectCreated) {
+                onProjectCreated();
+            }
+
+        } catch (error) {
+            console.error('Error creating project:', error);
+            alert('Failed to create project. Please try again.');
+        }
     };
 
     return (
@@ -76,3 +90,9 @@ const CreateProjectModal = ({ isOpen, onClose }) => {
 };
 
 export default CreateProjectModal;
+
+CreateProjectModal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onProjectCreated: PropTypes.func,
+};

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css';
-import { hasProjects } from '../utils/checkProjects';
 import ProjectCard from '../components/ProjectCard';
 import Navbar from '../components/Navbar';
 import HomePageImg from '../assets/Home-main-img.png';
@@ -51,6 +50,14 @@ const Home = () => {
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+    };
+
+    const refreshProjects = async () => {
+        const userEmail = localStorage.getItem('user_email');
+        if (userEmail) {
+            const projects = await getProjects(userEmail);
+            setProjects(projects);
+        }
     };
 
     if (isUserDetailsRequired) {
@@ -119,7 +126,11 @@ const Home = () => {
             )}
 
             {isModalOpen && (
-                <CreateProjectModal isOpen={isModalOpen} onClose={toggleModal} />
+                <CreateProjectModal
+                    isOpen={isModalOpen}
+                    onClose={toggleModal}
+                    onProjectCreated={refreshProjects}
+                />
             )}
         </div>
     );
