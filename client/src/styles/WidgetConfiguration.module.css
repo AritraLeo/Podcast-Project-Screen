@@ -330,3 +330,39 @@
     font-weight: 500;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.uploadActions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.deleteIconButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.deleteIconButton:hover {
+    background-color: #c82333;
+}
+
+.deleteIconButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.uploadButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

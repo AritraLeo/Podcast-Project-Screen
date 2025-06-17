@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdOutlineHome } from 'react-icons/md';
 import { IoMdArrowDropdown, IoMdNotificationsOutline } from 'react-icons/io';
-import { FiUpload } from 'react-icons/fi';
+import { FiUpload, FiTrash2 } from 'react-icons/fi';
 import Sidebar from './Sidebar';
-import { getProjectDetails, updateWidgetConfig } from '../utils/storage';
+import { getProjectDetails, updateWidgetConfig, uploadBotIcon, deleteBotIcon } from '../utils/storage';
 import styles from '../styles/WidgetConfiguration.module.css';
 import GB from '../assets/GB.png';
 
 const WidgetConfiguration = () => {
     const { projectId } = useParams();
+    const fileInputRef = useRef(null);
     const [project, setProject] = useState({});
     const [activeTab, setActiveTab] = useState('general');
     const [loading, setLoading] = useState(false);
+    const [uploadingIcon, setUploadingIcon] = useState(false);
     const [config, setConfig] = useState({
         general: {
             chatbotName: 'Chatbot',
@@ -90,6 +92,83 @@ const WidgetConfiguration = () => {
             alert('Error saving configuration. Please try again.');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            alert('Please select an image file');
+            return;
+        }
+
+        // Validate file size (5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            alert('File size must be less than 5MB');
+            return;
+        }
+
+        setUploadingIcon(true);
+        try {
+            const uploadResult = await uploadBotIcon(file);
+
+            // Update config with new bot icon URL
+            setConfig(prevConfig => ({
+                ...prevConfig,
+                advanced: {
+                    ...prevConfig.advanced,
+                    botIcon: uploadResult.file.url
+                }
+            }));
+
+            alert('Bot icon uploaded successfully!');
+        } catch (error) {
+            console.error('Error uploading bot icon:', error);
+            alert('Error uploading icon. Please try again.');
+        } finally {
+            setUploadingIcon(false);
+            // Reset file input
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+        }
+    };
+
+    const handleDeleteIcon = async () => {
+        if (!config.advanced.botIcon) return;
+
+        if (!window.confirm('Are you sure you want to delete this bot icon?')) {
+            return;
+        }
+
+        setUploadingIcon(true);
+        try {
+            await deleteBotIcon(config.advanced.botIcon);
+
+            // Remove icon from config
+            setConfig(prevConfig => ({
+                ...prevConfig,
+                advanced: {
+                    ...prevConfig.advanced,
+                    botIcon: ''
+                }
+            }));
+
+            alert('Bot icon deleted successfully!');
+        } catch (error) {
+            console.error('Error deleting bot icon:', error);
+            alert('Error deleting icon. Please try again.');
+        } finally {
+            setUploadingIcon(false);
+        }
+    };
+
+    const triggerFileUpload = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
         }
     };
 
@@ -274,10 +353,35 @@ const WidgetConfiguration = () => {
                             <div className={styles.iconPlaceholder}></div>
                         )}
                     </div>
-                    <button className={styles.uploadButton} type="button">
-                        <FiUpload size={16} />
-                        Upload Image
-                    </button>
+                    <div className={styles.uploadActions}>
+                        <button
+                            className={styles.uploadButton}
+                            type="button"
+                            onClick={triggerFileUpload}
+                            disabled={uploadingIcon}
+                        >
+                            <FiUpload size={16} />
+                            {uploadingIcon ? 'Uploading...' : 'Upload Image'}
+                        </button>
+                        {config.advanced.botIcon && (
+                            <button
+                                className={styles.deleteIconButton}
+                                type="button"
+                                onClick={handleDeleteIcon}
+                                disabled={uploadingIcon}
+                            >
+                                <FiTrash2 size={16} />
+                                Delete
+                            </button>
+                        )}
+                    </div>
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileUpload}
+                        style={{ display: 'none' }}
+                    />
                 </div>
             </div>
         </div>
@@ -340,16 +444,18 @@ const WidgetConfiguration = () => {
                         <button
                             className={styles.saveButton}
                             onClick={handleSave}
-                            disabled={loading}
+                            disabled={loading || uploadingIcon}
                         >
                             {loading ? 'Saving...' : 'Save Configuration'}
                         </button>
                     </div>
                 </div>
 
-                {loading && (
+                {(loading || uploadingIcon) && (
                     <div className={styles.loadingOverlay}>
-                        <div className={styles.loadingSpinner}>Saving configuration...</div>
+                        <div className={styles.loadingSpinner}>
+                            {uploadingIcon ? 'Uploading icon...' : 'Saving configuration...'}
+                        </div>
                     </div>
                 )}
             </div>

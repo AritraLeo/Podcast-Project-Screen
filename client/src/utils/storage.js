@@ -89,6 +89,36 @@ export const getProjectDetails = async (projectId) => {
     }
 };
 
+// File upload functions
+export const uploadBotIcon = async (file) => {
+    try {
+        const formData = new FormData();
+        formData.append('botIcon', file);
+
+        const response = await axios.post('/api/upload/bot-icon', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error uploading bot icon:', error);
+        throw error;
+    }
+};
+
+export const deleteBotIcon = async (fileUrl) => {
+    try {
+        const response = await axios.delete('/api/upload/bot-icon', {
+            data: { fileUrl }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting bot icon:', error);
+        throw error;
+    }
+};
+
 // User management functions
 export const createOrUpdateUser = async (userData) => {
     try {
