@@ -6,27 +6,27 @@ import HomePageImg from '../assets/Home-main-img.png';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaPlusCircle } from "react-icons/fa";
 import CreateProjectModal from '../components/CreateProjectModal';
-import { getProjects, removeUser } from '../utils/storage';
+import { getProjects, removeUser, createOrUpdateUser } from '../utils/storage';
 
 const Home = () => {
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
     const [email, setEmail] = useState(localStorage.getItem('user_email') || '');
     const [isUserDetailsRequired, setIsUserDetailsRequired] = useState(!username || !email);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [projects, setProjects] = useState([]);
-
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchProjects = async () => {
             const userEmail = localStorage.getItem('user_email');
-            const projects = await getProjects(userEmail);
-            setProjects(projects);
+            if (userEmail) {
+                const projects = await getProjects(userEmail);
+                setProjects(projects);
+            }
         };
 
         fetchProjects();
     }, []);
-
 
     useEffect(() => {
         if (!username || !email) {
@@ -34,7 +34,7 @@ const Home = () => {
         }
     }, [username, email]);
 
-    const handleUserDetailsSubmit = (e) => {
+    const handleUserDetailsSubmit = async (e) => {
         e.preventDefault();
 
         if (!username || !email) {
@@ -42,10 +42,28 @@ const Home = () => {
             return;
         }
 
-        localStorage.setItem('username', username);
-        localStorage.setItem('user_email', email);
+        setLoading(true);
+        try {
+            // Create or update user in database
+            await createOrUpdateUser({
+                email: email,
+                username: username
+            });
 
-        setIsUserDetailsRequired(false);
+            // Store in localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('user_email', email);
+
+            setIsUserDetailsRequired(false);
+        } catch (error) {
+            console.error('Error creating/updating user:', error);
+            // Still proceed with localStorage for demo purposes
+            localStorage.setItem('username', username);
+            localStorage.setItem('user_email', email);
+            setIsUserDetailsRequired(false);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const toggleModal = () => {
@@ -71,6 +89,7 @@ const Home = () => {
                             id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            disabled={loading}
                         />
                     </div>
                     <div className={styles.userDetailsInputGroup}>
@@ -80,9 +99,16 @@ const Home = () => {
                             id="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={loading}
                         />
                     </div>
-                    <button type="submit" className={styles.userDetailsSubmitButton}>Save</button>
+                    <button
+                        type="submit"
+                        className={styles.userDetailsSubmitButton}
+                        disabled={loading}
+                    >
+                        {loading ? 'Creating Account...' : 'Save'}
+                    </button>
                 </form>
             </div>
         );

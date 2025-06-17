@@ -5,12 +5,18 @@ import styles from '../styles/UploadModal.module.css';
 
 const UploadModal = ({ platform, onClose, onUpload }) => {
     const [name, setName] = useState('');
-    const [link, setLink] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleSubmit = (event) => {
         event.stopPropagation();
-        if (name && link) {
-            onUpload({ name, url: link, createdAt: new Date().toISOString(), platform: platform });
+        if (name && description) {
+            onUpload({
+                name,
+                url: `${platform.toLowerCase()}-file-${Date.now()}`, // Generate a dummy URL since we're not using actual links
+                description,
+                createdAt: new Date().toISOString(),
+                platform: platform
+            });
             onClose();
         }
     };
@@ -43,19 +49,19 @@ const UploadModal = ({ platform, onClose, onUpload }) => {
                         />
                     </div>
                     <div>
-                        <label className={styles.modalLabel}>Link</label>
-                        <input
-                            type="text"
-                            className={styles.modalInput}
-                            // placeholder="Enter link"
-                            value={link}
-                            onChange={(e) => setLink(e.target.value)}
+                        <label className={styles.modalLabel}>Description</label>
+                        <textarea
+                            className={styles.modalTextarea}
+                            rows="4"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Enter description or transcript content..."
                         />
                     </div>
                 </div>
                 <div className={styles.buttonContainer}>
                     <button className={styles.uploadButton} onClick={handleSubmit}>
-                        Upload
+                        Save
                     </button>
                 </div>
             </div>

@@ -10,7 +10,6 @@ export const getProjects = async (userEmail) => {
     }
 };
 
-
 export const createProject = async (projectData) => {
     try {
         const response = await axios.post('/api/projects/create', projectData);
@@ -35,6 +34,50 @@ export const addLinkToProject = async (projectId, upload) => {
     }
 };
 
+export const updateLink = async (projectId, linkId, linkData) => {
+    try {
+        const response = await axios.put('/api/projects/update-link', {
+            user_email: localStorage.getItem('user_email'),
+            projectId,
+            linkId,
+            ...linkData,
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating link:', error);
+        throw error;
+    }
+};
+
+export const deleteLink = async (projectId, linkId) => {
+    try {
+        const response = await axios.delete('/api/projects/delete-link', {
+            data: {
+                user_email: localStorage.getItem('user_email'),
+                projectId,
+                linkId,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting link:', error);
+        throw error;
+    }
+};
+
+export const updateWidgetConfig = async (projectId, widgetConfig) => {
+    try {
+        const response = await axios.put('/api/projects/widget-config', {
+            user_email: localStorage.getItem('user_email'),
+            projectId,
+            widgetConfig,
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating widget config:', error);
+        throw error;
+    }
+};
 
 export const getProjectDetails = async (projectId) => {
     try {
@@ -46,7 +89,39 @@ export const getProjectDetails = async (projectId) => {
     }
 };
 
+// User management functions
+export const createOrUpdateUser = async (userData) => {
+    try {
+        const response = await axios.post('/api/users/create-or-update', userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating/updating user:', error);
+        throw error;
+    }
+};
 
+export const getUserByEmail = async (email) => {
+    try {
+        const response = await axios.get(`/api/users/${email}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        return null;
+    }
+};
+
+export const updateUsername = async (email, username) => {
+    try {
+        const response = await axios.put('/api/users/update-username', {
+            email,
+            username,
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating username:', error);
+        throw error;
+    }
+};
 
 export const getUser = () => {
     return JSON.parse(localStorage.getItem('user'));
@@ -69,7 +144,6 @@ export const removeUser = () => {
         console.error('Error removing user from local storage:', error);
     }
 };
-
 
 export const setProjects = (projects) => {
     localStorage.setItem('projects', JSON.stringify(projects));

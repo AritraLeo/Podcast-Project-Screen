@@ -171,3 +171,50 @@
     margin: 0;
     border-left: 0.89px solid #D9D9D9;
 }
+
+.tableContainer {
+    margin-top: 30px;
+    position: relative;
+}
+
+.statusCompleted {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loadingSpinner {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.editButton:hover {
+    background-color: #f8f9fa;
+}
+
+.deleteButton:hover {
+    background-color: #fff5f5;
+    color: #dc3545;
+}
+
+.editButton:disabled,
+.deleteButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

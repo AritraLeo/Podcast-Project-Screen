@@ -1,0 +1,203 @@
+.transcriptEditor {
+    display: flex;
+    min-height: 100vh;
+}
+
+.mainContent {
+    padding: 40px;
+    flex-grow: 1;
+    background-color: #f8f9fa;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.breadcrumbIcon {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #7E22CE;
+}
+
+.breadcrumbRight {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.breadcrumbDropdown {
+    margin-right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.breadcrumbNotification {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-family: Roboto, sans-serif;
+    font-size: 55px;
+    font-weight: 700;
+    color: #7E22CE;
+    margin: 0;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 15px;
+}
+
+.editButton,
+.discardButton,
+.saveExitButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.editButton {
+    background-color: #7E22CE;
+    color: white;
+}
+
+.editButton:hover {
+    background-color: #6B1F9B;
+}
+
+.discardButton {
+    background-color: #6c757d;
+    color: white;
+}
+
+.discardButton:hover {
+    background-color: #5a6268;
+}
+
+.saveExitButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.saveExitButton:hover {
+    background-color: #218838;
+}
+
+.editButton:disabled,
+.discardButton:disabled,
+.saveExitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.transcriptContainer {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.transcriptHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.speakerLabel {
+    font-family: Roboto, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #7E22CE;
+    margin: 0;
+}
+
+.editModeIndicator {
+    background-color: #7E22CE;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.transcriptText {
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    min-height: 200px;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.transcriptTextarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 20px;
+    border: 2px solid #7E22CE;
+    border-radius: 8px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.transcriptTextarea:focus {
+    outline: none;
+    border-color: #6B1F9B;
+    box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
+}
+
+.transcriptTextarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loadingSpinner {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

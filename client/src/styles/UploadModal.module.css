@@ -100,3 +100,20 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.modalTextarea {
+    padding: 22px;
+    font-size: 26px;
+    border: 3px solid #999999;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 120px;
+    font-family: Roboto, sans-serif;
+}
+
+.modalTextarea:focus {
+    outline: none;
+    border-color: #7E22CE;
+}
